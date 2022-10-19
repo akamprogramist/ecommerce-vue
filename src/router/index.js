@@ -6,7 +6,7 @@ import ClothesView from "../views/ClothesView.vue";
 import ElectronicsView from "../views/ElectronicsView.vue";
 import ViewItemPage from "../components/items/ViewItemPage.vue";
 import Create from "../views/Create.vue";
-import EditItem from "../components/items/EditItem.vue";
+import EditItemView from "../views/EditItemView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,9 +42,9 @@ const router = createRouter({
       component: ClothesView,
     },
     {
-      path: "/edititem/:id",
-      name: "edititem",
-      component: EditItem,
+      path: "/edititemview/:id",
+      name: "edititemview",
+      component: EditItemView,
     },
     {
       path: "/viewitempage/:id",

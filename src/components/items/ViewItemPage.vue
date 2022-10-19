@@ -22,12 +22,25 @@
       <p class="title is-4">{{ item.price }}$</p>
     </div>
   </div>
+  <EditDeleteButton :item="item" />
+
+  <ModalDeleteItem
+    v-if="modals.deleteItem"
+    v-model="modals.deleteItem"
+    :itemId="item.id"
+  />
 </template>
 
 <script setup>
+import { reactive } from "vue";
+import EditDeleteButton from "./EditDeleteButton.vue";
+import ModalDeleteItem from "./ModalDeleteItem.vue";
 import { useRoute } from "vue-router";
 import { ItemsStore } from "@/stores/ItemStore";
 const ItemStore = ItemsStore();
 const route = useRoute();
 const item = ItemStore.viewItem(route.params.id);
+const modals = reactive({
+  deleteItem: false,
+});
 </script>

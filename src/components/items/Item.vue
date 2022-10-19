@@ -10,26 +10,26 @@
       </div>
     </div>
   </RouterLink>
-  <div class="card">
-    <footer class="card-footer">
-      <RouterLink :to="`/EditItem/${item.id}`" class="card-footer-item"
-        >Edit</RouterLink
-      >
-      <a @click.prevent="removeItem" class="card-footer-item">Delete</a>
-    </footer>
-  </div>
+  <EditDeleteButton :item="item" />
+
+  <ModalDeleteItem
+    v-if="modals.deleteItem"
+    v-model="modals.deleteItem"
+    :itemId="item.id"
+  />
 </template>
 
 <script setup>
-import { ItemsStore } from "@/stores/ItemStore";
-const ItemStore = ItemsStore();
+import { reactive } from "vue";
+import EditDeleteButton from "./EditDeleteButton.vue";
+import ModalDeleteItem from "./ModalDeleteItem.vue";
 const props = defineProps({
   item: {
     type: Object,
     required: true,
   },
 });
-const removeItem = (item) => {
-  ItemStore.delete(item);
-};
+const modals = reactive({
+  deleteItem: false,
+});
 </script>

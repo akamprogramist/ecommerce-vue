@@ -4,7 +4,7 @@ import { useStorage } from "@vueuse/core";
 export const ItemsStore = defineStore("Items", {
   state: () => ({
     items: useStorage("items", []),
-    // searchValue: "",
+    searchValue: "",
     // selectedCategory: "All",
   }),
   actions: {
@@ -13,8 +13,10 @@ export const ItemsStore = defineStore("Items", {
         ...item,
       });
     },
-    delete(item) {
-      this.items = this.items.filter((t) => t !== item);
+    deleteItem(itemId) {
+      this.items = this.items.filter((item) => {
+        return item.id !== itemId;
+      });
     },
     update(item) {
       this.item = () => {
@@ -30,6 +32,16 @@ export const ItemsStore = defineStore("Items", {
         })[0];
       };
     },
+    searchItems() {
+      if (this.searchValue.trim().length > 0) {
+        return this.items.filter((item) =>
+          item.name
+            .toLowerCase()
+            .includes(this.searchValue.trim().toLowerCase())
+        );
+      }
+      return this.items;
+    },
   },
 
   // getters: {
@@ -40,16 +52,6 @@ export const ItemsStore = defineStore("Items", {
   //       });
   //     }
   //     return this.items;
-  //   },
-  //   searchItems() {
-  //     if (this.searchValue.trim().length > 0) {
-  //       return this.items.filter((item) =>
-  //         item.title
-  //           .toLowerCase()
-  //           .includes(this.searchValue.trim().toLowerCase())
-  //       );
-  //     }
-  //     return this.items && this.filteredItems;
   //   },
   // },
 });

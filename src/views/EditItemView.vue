@@ -1,12 +1,5 @@
 <template>
-  <!-- <input
-    class="input"
-    ref="itemsInput"
-    type="text"
-    v-model="item.name"
-    placeholder="rhias lsnmkl"
-  /> -->
-  <!-- <form @submit.prevent="$emit('UpdateItem', itemsInput)">
+  <form @submit.prevent="SaveUpdateItem">
     <div class="card">
       <div class="card-content mt-5">
         <div class="field">
@@ -75,18 +68,33 @@
             />
           </div>
         </div>
+        <button class="button is-link mr-3 has-background-link">
+          Save Note
+        </button>
+        <button @click="$router.back()" class="button is-light has-light mr-2">
+          Cancel
+        </button>
       </div>
     </div>
-  </form> -->
+  </form>
 </template>
 <script setup>
+import { useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
+import { ItemsStore } from "@/stores/ItemStore";
+const ItemStore = ItemsStore();
+const route = useRoute();
+const router = useRouter();
 const itemsInput = ref({
   name: "",
   picked: null,
   content: "",
   price: "",
-  id,
 });
+
 itemsInput.value = ItemStore.viewItem(route.params.id);
+const SaveUpdateItem = () => {
+  ItemStore.update(route.params.id, itemsInput.value);
+  router.push("/");
+};
 </script>
