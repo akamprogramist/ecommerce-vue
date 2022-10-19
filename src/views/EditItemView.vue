@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="SaveUpdateItem">
+  <form @submit.prevent="CreateItem">
     <div class="card">
       <div class="card-content mt-5">
         <div class="field">
@@ -93,7 +93,7 @@ const itemsInput = ref({
 });
 
 itemsInput.value = ItemStore.viewItem(route.params.id);
-const SaveUpdateItem = () => {
+const CreateItem = () => {
   ItemStore.update(route.params.id, itemsInput.value);
   router.push("/");
 };

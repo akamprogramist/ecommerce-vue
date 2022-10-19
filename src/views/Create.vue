@@ -1,4 +1,5 @@
 <template>
+  <Title label="Create a Product"></Title>
   <div>
     <form @submit.prevent="CreateItem">
       <div class="card">
@@ -78,6 +79,7 @@
 
 <script setup>
 import { ItemsStore } from "@/stores/ItemStore";
+import Title from "../components/Title.vue";
 import { ref } from "vue";
 const ItemStore = ItemsStore();
 let currentDate = new Date().getTime(),

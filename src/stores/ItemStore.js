@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
-
 export const ItemsStore = defineStore("Items", {
   state: () => ({
     items: useStorage("items", []),
@@ -32,6 +31,15 @@ export const ItemsStore = defineStore("Items", {
         })[0];
       };
     },
+    itemCatCars() {
+      return this.items.filter((item) => item.picked === "cars");
+    },
+    itemCatClothes() {
+      return this.items.filter((item) => item.picked === "clothes");
+    },
+    itemCatElectronics() {
+      return this.items.filter((item) => item.picked === "electronics");
+    },
     searchItems() {
       if (this.searchValue.trim().length > 0) {
         return this.items.filter((item) =>
@@ -40,18 +48,10 @@ export const ItemsStore = defineStore("Items", {
             .includes(this.searchValue.trim().toLowerCase())
         );
       }
-      return this.items;
+      return this.items ;
     },
   },
 
   // getters: {
-  //   filteredItems() {
-  //     if (this.selectedCategory !== "All") {
-  //       return this.items.filter((item) => {
-  //         return item.picked === this.selectedCategory;
-  //       });
-  //     }
-  //     return this.items;
-  //   },
   // },
 });

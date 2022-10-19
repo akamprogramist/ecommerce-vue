@@ -1,5 +1,17 @@
 <template>
-  <div class="electronics">
-    <h1>This is an electronics page</h1>
+  <Title label="Electronics"></Title>
+  <div>
+    <Item
+      v-for="item in ItemStore.itemCatElectronics"
+      :key="item.id"
+      :item="item"
+    />
   </div>
 </template>
+<script setup>
+import Item from "@/components/items/Item.vue";
+import Search from "@/components/items/Search.vue";
+import { ItemsStore } from "@/stores/ItemStore";
+import Title from "../components/Title.vue";
+const ItemStore = ItemsStore();
+</script>
