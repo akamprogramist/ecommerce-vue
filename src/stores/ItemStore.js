@@ -24,6 +24,9 @@ export const ItemsStore = defineStore("Items", {
     },
   },
   getters: {
+    totalItemsCount: (state) => {
+      return state.items.length;
+    },
     viewItem: (state) => {
       return (id) => {
         return state.items.filter((item) => {
@@ -48,7 +51,7 @@ export const ItemsStore = defineStore("Items", {
             .includes(this.searchValue.trim().toLowerCase())
         );
       }
-      return this.items ;
+      return this.items;
     },
   },
 
