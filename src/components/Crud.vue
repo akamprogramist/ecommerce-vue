@@ -3,56 +3,13 @@
     <div class="card">
       <div class="card-content mt-5">
         <div class="field">
-          <label class="label">Name</label>
-          <div class="control">
-            <input
-              class="input"
-              v-model="itemsInput.name"
-              type="text"
-              placeholder="Text input"
-            />
-          </div>
-        </div>
-        <label class="label">Category</label>
-        <div class="control mb-3">
-          <label class="radio">
-            <input
-              type="radio"
-              v-model="itemsInput.picked"
-              value="cars"
-              id="cars"
-              name="answer"
-            />
-            Cars
-          </label>
-          <label class="radio">
-            <input
-              type="radio"
-              v-model="itemsInput.picked"
-              value="clothes"
-              id="clothes"
-              name="answer"
-            />
-            Clothes
-          </label>
-          <label class="radio">
-            <input
-              type="radio"
-              v-model="itemsInput.picked"
-              value="electronics"
-              id="electronics"
-              name="answer"
-            />
-            Electronics
-          </label>
-        </div>
-
-        <div class="field">
           <label class="label">Content</label>
           <div class="control">
             <textarea
               class="textarea"
               v-model="itemsInput.content"
+              @input="$emit('update:content', itemsInput.content)"
+              ref="content"
               placeholder="Textarea"
             ></textarea>
           </div>
@@ -64,6 +21,8 @@
               class="input"
               type="text"
               v-model="itemsInput.price"
+              @input="$emit('update:price', itemsInput.price)"
+              ref="price"
               placeholder="Text input"
             />
           </div>
@@ -98,4 +57,19 @@ const itemsInput = ref({
   price: "",
   id,
 });
+const props = defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: String,
+    required: true,
+  },
+});
+const emit = defineEmits(["update:name", "update:content", "update:price"]);
 </script>
