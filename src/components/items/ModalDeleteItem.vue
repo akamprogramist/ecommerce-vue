@@ -11,7 +11,6 @@
       </section>
       <footer class="modal-card-foot is-justify-content-flex-end">
         <button class="button" @click="closeModal">Cancel</button>
-        <!-- <button class="button is-danger" @click="ItemStore.deleteItem(itemId)"> -->
         <button class="button is-danger" @click="removeItem(itemId)">
           Delete
         </button>

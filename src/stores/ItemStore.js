@@ -4,7 +4,6 @@ export const ItemsStore = defineStore("Items", {
   state: () => ({
     items: useStorage("items", []),
     searchValue: "",
-    // selectedCategory: "All",
   }),
   actions: {
     addTodo(item) {

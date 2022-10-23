@@ -6,7 +6,9 @@
         class="input"
         id="search"
         name="search"
-        v-model="ItemStore.searchValue"
+        ref="search"
+        v-model="modelValue"
+        @input="$emit('update:modelValue', modelValue)"
         type="search"
         placeholder="Search"
       />
@@ -15,6 +17,15 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { ItemsStore } from "@/stores/ItemStore";
 const ItemStore = ItemsStore();
+const emit = defineEmits(["update:modelValue"]);
+const search = ref(null);
+const props = defineProps({
+  modelValue: {
+    type: String,
+    required: true,
+  },
+});
 </script>

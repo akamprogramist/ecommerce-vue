@@ -8,7 +8,7 @@
         @input="$emit('update:modelValue', modelValue)"
         ref="price"
         type="text"
-        placeholder="Text input"
+        placeholder="Price"
       />
     </div>
   </div>

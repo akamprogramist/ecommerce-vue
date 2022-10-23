@@ -1,5 +1,6 @@
 <template>
   <Title label="Cars"></Title>
+
   <div
     v-if="ItemStore.itemCatCars.length <= 0"
     class="content columns mt-3 is-medium is-centered"

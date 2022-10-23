@@ -16,7 +16,6 @@
 </template>
 <script setup>
 import Item from "@/components/items/Item.vue";
-import Search from "@/components/items/Search.vue";
 import { ItemsStore } from "@/stores/ItemStore";
 import Title from "../components/Title.vue";
 const ItemStore = ItemsStore();

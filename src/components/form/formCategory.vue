@@ -6,9 +6,9 @@
         type="radio"
         v-model="modelValue"
         @input="$emit('update:modelValue', modelValue)"
+        ref="picked"
         value="cars"
         id="cars"
-        ref="picked"
         name="answer"
       />
       Cars
@@ -48,7 +48,6 @@ const props = defineProps({
     required: true,
   },
 });
-
 const emit = defineEmits(["update:modelValue"]);
 const picked = ref(null);
 </script>

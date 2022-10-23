@@ -1,7 +1,8 @@
 <template>
   <div>
     <Title label="All Products"></Title>
-    <Search />
+    <Search v-model="ItemStore.searchValue" ref="search" />
+
     <Item v-for="item in ItemStore.searchItems" :key="item.id" :item="item" />
   </div>
 </template>

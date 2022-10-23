@@ -4,10 +4,19 @@
     <div class="card">
       <div class="card-content mt-5">
         <FormName v-model="itemsInput.name" ref="name"></FormName>
-        <FormCategory v-model="itemsInput.picked" ref="picked"></FormCategory>
+        <FormCategory v-model="itemsInput.picked" ref="category"></FormCategory>
         <FormContent v-model="itemsInput.content" ref="content"></FormContent>
         <FormPrice v-model="itemsInput.price" ref="price"></FormPrice>
-        <button @submit.prevent="CreateItem">submit</button>
+        <div class="field is-grouped is-grouped-left">
+          <div class="control">
+            <button
+              type="submit"
+              class="button is-link mt-3 has-background-link"
+            >
+              Add Product
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </form>
