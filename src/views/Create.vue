@@ -4,8 +4,20 @@
     <div class="card">
       <div class="card-content mt-5">
         <FormName v-model="itemsInput.name" ref="name"></FormName>
-        <FormCategory v-model="itemsInput.picked" ref="category"></FormCategory>
+        <h1 class="label">Category</h1>
+        <FormCategory cats="Cars" value="cars" v-model="itemsInput.picked" />
+        <FormCategory
+          cats="Clothes"
+          value="clothes"
+          v-model="itemsInput.picked"
+        />
+        <FormCategory
+          cats="Electronics"
+          value="electronics"
+          v-model="itemsInput.picked"
+        />
         <FormContent v-model="itemsInput.content" ref="content"></FormContent>
+
         <FormPrice v-model="itemsInput.price" ref="price"></FormPrice>
         <div class="field is-grouped is-grouped-left">
           <div class="control">
