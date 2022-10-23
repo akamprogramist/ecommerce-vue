@@ -4,6 +4,7 @@
     <input
       name="answer"
       type="radio"
+      v-model="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
       :value="value"
     />
